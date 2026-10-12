@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Registration Form</title>
+</head>
+<body>
+
+    <h2>Course Registration Form</h2>
+
+    <form id="myForm">
+
+        Name:
+        <input type="text" id="name"
+               placeholder="Enter your name"
+               pattern="[A-Za-z ]{3,}"
+               required>
+        <br><br>
+
+        Email:
+        <input type="email" id="email"
+               placeholder="Enter your email"
+               required>
+        <br><br>
+
+        Mobile Number:
+        <input type="tel" id="mobile"
+               placeholder="Enter 10-digit mobile number"
+               pattern="[0-9]{10}"
+               required>
+        <br><br>
+
+        Password:
+        <input type="password" id="password"
+               placeholder="Enter password"
+               minlength="8"
+               required>
+        <br><br>
+
+        Course:
+        <select id="course" required>
+            <option value="">Select Course</option>
+            <option>HTML</option>
+            <option>JavaScript</option>
+            <option>Python</option>
+            <option>Java</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit",
+        function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let mobile = document.getElementById("mobile").value;
+            let password = document.getElementById("password").value;
+
+            if (name.length < 3) {
+                alert("Name must contain at least 3 characters");
+            }
+            else if (!/^[0-9]{10}$/.test(mobile)) {
+                alert("Enter a valid 10-digit mobile number");
+            }
+            else if (password.length < 8) {
+                alert("Password must contain at least 8 characters");
+            }
+            else {
+                document.getElementById("message").innerHTML =
+                "Registration Successful!";
+            }
+
+        });
+    </script>
+
+</body>
+</html>
